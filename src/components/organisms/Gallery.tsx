@@ -14,7 +14,7 @@ export function Gallery() {
   const scrollToIndex = (index: number) => {
     if (scrollRef.current) {
       const cardWidth = scrollRef.current.children[0]?.clientWidth || 0;
-      const gap = 24;
+      const gap = 16;
       scrollRef.current.scrollTo({
         left: index * (cardWidth + gap),
         behavior: 'smooth',
@@ -35,32 +35,32 @@ export function Gallery() {
   };
 
   return (
-    <section id="gallery" className="py-24 md:py-32">
+    <section id="gallery" className="py-16 md:py-24 lg:py-32">
       <Container>
         <motion.div
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="mb-12 flex items-end justify-between"
+          className="mb-8 md:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4"
         >
-          <div className="flex items-baseline gap-8">
+          <div className="flex items-baseline gap-4 md:gap-8">
             <motion.span
               variants={fadeInUp}
-              className="text-6xl md:text-8xl font-light text-white/20"
+              className="text-4xl md:text-6xl lg:text-8xl font-light text-white/20"
             >
               {(currentIndex + 1).toString().padStart(2, '0')}
             </motion.span>
             <Typography
               as="h2"
               variant="title"
-              className="text-white"
+              className="text-white !text-2xl md:!text-4xl lg:!text-5xl"
               animate={false}
             >
               GALLERY
             </Typography>
           </div>
-          <motion.div variants={fadeInUp} className="flex gap-3">
+          <motion.div variants={fadeInUp} className="hidden md:flex gap-3">
             <ArrowButton
               direction="left"
               onClick={handlePrev}
@@ -76,19 +76,39 @@ export function Gallery() {
 
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 -mx-6 px-6"
+          className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide pb-4 -mx-6 px-6"
           style={{ scrollSnapType: 'x mandatory' }}
         >
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="flex-shrink-0 w-[280px] md:w-[320px]"
+              className="flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] lg:w-[320px]"
               style={{ scrollSnapAlign: 'start' }}
             >
               <ProjectCard project={project} index={index} />
             </div>
           ))}
         </div>
+
+        {/* Mobile navigation arrows */}
+        <motion.div
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          className="flex md:hidden justify-end gap-3 mt-6"
+        >
+          <ArrowButton
+            direction="left"
+            onClick={handlePrev}
+            disabled={currentIndex === 0}
+          />
+          <ArrowButton
+            direction="right"
+            onClick={handleNext}
+            disabled={currentIndex === projects.length - 1}
+          />
+        </motion.div>
       </Container>
     </section>
   );

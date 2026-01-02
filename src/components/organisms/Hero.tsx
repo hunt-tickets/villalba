@@ -8,7 +8,7 @@ import { fadeInUp, staggerContainer } from '@/lib/animations';
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0">
       <Container className="relative z-10">
         <motion.div
           variants={staggerContainer}
@@ -16,11 +16,11 @@ export function Hero() {
           animate="animate"
           className="flex flex-col items-center text-center"
         >
-          <div className="relative mb-8">
+          <div className="relative mb-6 md:mb-8">
             <ImageStack images={heroImages} className="mx-auto" />
           </div>
 
-          <motion.div variants={fadeInUp} className="space-y-2">
+          <motion.div variants={fadeInUp} className="space-y-1 md:space-y-2">
             <Typography
               as="h1"
               variant="hero"
@@ -32,7 +32,7 @@ export function Hero() {
             <Typography
               as="h1"
               variant="hero"
-              className="text-white indent-8 md:indent-16"
+              className="text-white indent-4 md:indent-16"
               animate={false}
             >
               ANTONIA
@@ -40,7 +40,7 @@ export function Hero() {
             <Typography
               as="h1"
               variant="hero"
-              className="text-white indent-16 md:indent-32"
+              className="text-white indent-8 md:indent-32"
               animate={false}
             >
               VILLALBA
@@ -48,19 +48,20 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
+        {/* Footer info - hidden on very small screens, stacked on mobile */}
         <motion.div
           variants={fadeInUp}
           initial="initial"
           animate="animate"
-          className="absolute bottom-8 left-0 right-0 flex items-end justify-between text-white/60"
+          className="absolute bottom-4 md:bottom-8 left-0 right-0 flex flex-col md:flex-row items-center md:items-end justify-between gap-4 md:gap-0 text-white/60"
         >
-          <span className="text-xs tracking-[0.15em]">ANTONIA VILLALBA</span>
-          <span className="text-[10px] tracking-[0.1em] text-center">
+          <span className="hidden md:block text-xs tracking-[0.15em]">ANTONIA VILLALBA</span>
+          <span className="text-[9px] md:text-[10px] tracking-[0.1em] text-center">
             A FILMMAKER & VISUAL ARTIST
             <br />
             BASED IN ARGENTINA
           </span>
-          <span className="text-xs tracking-[0.15em]">&copy;2025</span>
+          <span className="hidden md:block text-xs tracking-[0.15em]">&copy;2025</span>
         </motion.div>
       </Container>
     </section>

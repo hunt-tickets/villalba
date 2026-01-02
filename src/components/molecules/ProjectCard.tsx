@@ -38,7 +38,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           {project.title}
         </h3>
         <p className="text-[10px] tracking-[0.1em] text-white/50">
-          {project.imageCount.toString().padStart(2, '0')} IMAGES
+          {project.imageCount.toString().padStart(2, '0')} IMÁGENES
         </p>
       </div>
     </motion.article>

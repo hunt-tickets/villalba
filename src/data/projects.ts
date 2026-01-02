@@ -2,36 +2,36 @@ import { Project, NavItem } from '@/types';
 
 export const projects: Project[] = [
   {
-    id: 'urban-stories',
-    title: 'URBAN STORIES',
+    id: 'historias-urbanas',
+    title: 'HISTORIAS URBANAS',
     imageCount: 12,
     thumbnail: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&h=500&fit=crop',
     category: 'film',
   },
   {
-    id: 'silent-frames',
-    title: 'SILENT FRAMES',
+    id: 'cuadros-silentes',
+    title: 'CUADROS SILENTES',
     imageCount: 9,
     thumbnail: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&h=500&fit=crop',
     category: 'video',
   },
   {
-    id: 'moments',
-    title: 'MOMENTS',
+    id: 'momentos',
+    title: 'MOMENTOS',
     imageCount: 20,
     thumbnail: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&h=500&fit=crop',
     category: 'photo',
   },
   {
-    id: 'perspectives',
-    title: 'PERSPECTIVES',
+    id: 'perspectivas',
+    title: 'PERSPECTIVAS',
     imageCount: 15,
     thumbnail: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=500&fit=crop',
     category: 'film',
   },
   {
-    id: 'dreams',
-    title: 'DREAMS',
+    id: 'suenos',
+    title: 'SUEÑOS',
     imageCount: 8,
     thumbnail: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&h=500&fit=crop',
     category: 'video',
@@ -40,8 +40,8 @@ export const projects: Project[] = [
 
 export const navItems: NavItem[] = [
   { label: 'INSTAGRAM', href: 'https://instagram.com', external: true },
-  { label: 'GALLERY', href: '#gallery' },
-  { label: 'CONTACT', href: '#contact' },
+  { label: 'GALERÍA', href: '#gallery' },
+  { label: 'CONTACTO', href: '#contact' },
 ];
 
 export const heroImages = [

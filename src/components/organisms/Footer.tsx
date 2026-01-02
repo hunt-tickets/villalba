@@ -22,14 +22,14 @@ export function Footer() {
               className="text-white mb-4 md:mb-6 !text-3xl md:!text-4xl lg:!text-5xl"
               animate={false}
             >
-              LET&apos;S WORK
+              TRABAJEMOS
               <br />
-              TOGETHER
+              JUNTOS
             </Typography>
             <p className="text-white/60 text-sm leading-relaxed max-w-md">
-              I&apos;m passionate about creating visual stories that connect and inspire.
-              Whether it&apos;s a film, video, or photography project, I&apos;d love to
-              hear about your vision.
+              Me apasiona crear historias visuales que conectan e inspiran.
+              Ya sea un proyecto de cine, video o fotografía, me encantaría
+              conocer tu visión.
             </p>
           </motion.div>
 
@@ -77,7 +77,7 @@ export function Footer() {
                 ANTO&apos;S FILMS
               </span>
               <span className="text-[10px] md:text-xs tracking-[0.15em] text-white/40">
-                &copy; {new Date().getFullYear()} ALL RIGHTS RESERVED
+                &copy; {new Date().getFullYear()} TODOS LOS DERECHOS RESERVADOS
               </span>
             </div>
           </motion.div>

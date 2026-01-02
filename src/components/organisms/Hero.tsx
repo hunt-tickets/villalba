@@ -45,9 +45,9 @@ export function Hero() {
         >
           <span className="hidden md:block text-xs tracking-[0.15em]">ANTONIA VILLALBA</span>
           <span className="text-[9px] md:text-[10px] tracking-[0.1em] text-center">
-            A FILMMAKER & VISUAL ARTIST
+            REALIZADORA AUDIOVISUAL
             <br />
-            BASED IN ARGENTINA
+            BASADA EN COLOMBIA
           </span>
           <span className="hidden md:block text-xs tracking-[0.15em]">&copy;2025</span>
         </motion.div>

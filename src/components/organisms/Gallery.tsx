@@ -57,7 +57,7 @@ export function Gallery() {
               className="text-white !text-2xl md:!text-4xl lg:!text-5xl"
               animate={false}
             >
-              GALLERY
+              GALERÍA
             </Typography>
           </div>
           <motion.div variants={fadeInUp} className="hidden md:flex gap-3">

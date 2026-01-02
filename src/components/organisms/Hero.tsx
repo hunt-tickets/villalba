@@ -20,30 +20,14 @@ export function Hero() {
             <ImageStack images={heroImages} className="mx-auto" />
           </div>
 
-          <motion.div variants={fadeInUp} className="space-y-1 md:space-y-2">
+          <motion.div variants={fadeInUp}>
             <Typography
               as="h1"
               variant="hero"
               className="text-white"
               animate={false}
             >
-              HELLO, I&apos;M
-            </Typography>
-            <Typography
-              as="h1"
-              variant="hero"
-              className="text-white indent-4 md:indent-16"
-              animate={false}
-            >
-              ANTONIA
-            </Typography>
-            <Typography
-              as="h1"
-              variant="hero"
-              className="text-white indent-8 md:indent-32"
-              animate={false}
-            >
-              VILLALBA
+              Mi Portafolio
             </Typography>
           </motion.div>
         </motion.div>

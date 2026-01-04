@@ -77,7 +77,20 @@ export function Gallery() {
         <div
           ref={scrollRef}
           className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide pb-4 -mx-6 px-6"
-          style={{ scrollSnapType: 'x mandatory' }}
+          style={{
+            scrollSnapType: 'x mandatory',
+            touchAction: 'pan-x pan-y',
+            WebkitOverflowScrolling: 'touch',
+          }}
+          onScroll={(e) => {
+            const container = e.currentTarget;
+            const cardWidth = container.children[0]?.clientWidth || 0;
+            const gap = 16;
+            const newIndex = Math.round(container.scrollLeft / (cardWidth + gap));
+            if (newIndex !== currentIndex && newIndex >= 0 && newIndex < projects.length) {
+              setCurrentIndex(newIndex);
+            }
+          }}
         >
           {projects.map((project, index) => (
             <div

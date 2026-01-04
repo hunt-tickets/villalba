@@ -76,7 +76,7 @@ export function Gallery() {
 
         <div
           ref={scrollRef}
-          className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide pb-4 -mx-6 px-6"
+          className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide pb-4 -mx-4 sm:-mx-6 md:-mx-12 lg:-mx-16 px-4 sm:px-6 md:px-12 lg:px-16"
           style={{
             scrollSnapType: 'x mandatory',
             touchAction: 'pan-x pan-y',

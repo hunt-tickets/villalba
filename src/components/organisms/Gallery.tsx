@@ -73,36 +73,38 @@ export function Gallery() {
             />
           </motion.div>
         </motion.div>
+      </Container>
 
-        <div
-          ref={scrollRef}
-          className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide pb-4 -mx-4 sm:-mx-6 md:-mx-12 lg:-mx-16 px-4 sm:px-6 md:px-12 lg:px-16"
-          style={{
-            scrollSnapType: 'x mandatory',
-            touchAction: 'pan-x pan-y',
-            WebkitOverflowScrolling: 'touch',
-          }}
-          onScroll={(e) => {
-            const container = e.currentTarget;
-            const cardWidth = container.children[0]?.clientWidth || 0;
-            const gap = 16;
-            const newIndex = Math.round(container.scrollLeft / (cardWidth + gap));
-            if (newIndex !== currentIndex && newIndex >= 0 && newIndex < projects.length) {
-              setCurrentIndex(newIndex);
-            }
-          }}
-        >
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className="flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] lg:w-[320px]"
-              style={{ scrollSnapAlign: 'start' }}
-            >
-              <ProjectCard project={project} index={index} />
-            </div>
-          ))}
-        </div>
+      <div
+        ref={scrollRef}
+        className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide pb-4 pl-4 sm:pl-6 md:pl-12 lg:pl-16 pr-4"
+        style={{
+          scrollSnapType: 'x mandatory',
+          touchAction: 'pan-x pan-y',
+          WebkitOverflowScrolling: 'touch',
+        }}
+        onScroll={(e) => {
+          const container = e.currentTarget;
+          const cardWidth = container.children[0]?.clientWidth || 0;
+          const gap = 16;
+          const newIndex = Math.round(container.scrollLeft / (cardWidth + gap));
+          if (newIndex !== currentIndex && newIndex >= 0 && newIndex < projects.length) {
+            setCurrentIndex(newIndex);
+          }
+        }}
+      >
+        {projects.map((project, index) => (
+          <div
+            key={project.id}
+            className="flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] lg:w-[320px]"
+            style={{ scrollSnapAlign: 'start' }}
+          >
+            <ProjectCard project={project} index={index} />
+          </div>
+        ))}
+      </div>
 
+      <Container>
         {/* Mobile navigation arrows */}
         <motion.div
           variants={fadeInUp}

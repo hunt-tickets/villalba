@@ -15,7 +15,7 @@ export function Header() {
       variants={fadeIn}
       initial="initial"
       animate="animate"
-      className="fixed top-0 left-0 right-0 z-50 py-4 md:py-6"
+      className="fixed top-0 left-0 right-0 z-50 py-4 md:py-6 bg-black/80 backdrop-blur-md"
     >
       <Container className="flex items-center justify-between">
         <a

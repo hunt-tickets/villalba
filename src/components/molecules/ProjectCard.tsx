@@ -3,23 +3,16 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Project } from '@/types';
-import { fadeInUp, hoverScale } from '@/lib/animations';
+import { hoverScale } from '@/lib/animations';
 
 interface ProjectCardProps {
   project: Project;
   index: number;
 }
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
+export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <motion.article
-      variants={fadeInUp}
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true, margin: '-50px' }}
-      custom={index}
-      className="group cursor-pointer"
-    >
+    <article className="group cursor-pointer">
       <motion.div
         className="relative aspect-[4/5] overflow-hidden bg-neutral-900 mb-4"
         whileHover={hoverScale}
@@ -41,6 +34,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           {project.imageCount.toString().padStart(2, '0')} IMÁGENES
         </p>
       </div>
-    </motion.article>
+    </article>
   );
 }

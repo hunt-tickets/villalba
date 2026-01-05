@@ -1,103 +1,35 @@
 import { Project, NavItem } from '@/types';
+import projectsData from '../../content/projects.json';
 
-// Static fallback projects (used when CMS content is empty)
-export const staticProjects: Project[] = [
-  {
-    id: 'historias-urbanas',
-    title: 'HISTORIAS URBANAS',
-    subtitle: 'Documental',
-    description: 'Una exploración visual de las historias que habitan en las calles de la ciudad. Cada esquina cuenta una historia, cada rostro guarda un secreto. Este proyecto busca capturar la esencia de la vida urbana a través de momentos fugaces y encuentros inesperados.',
-    year: '2024',
-    role: 'Directora / Editora',
-    imageCount: 12,
-    thumbnail: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&h=500&fit=crop',
-    images: [
-      'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&h=800&fit=crop',
-      'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=1200&h=800&fit=crop',
-      'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=1200&h=800&fit=crop',
-      'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&h=800&fit=crop',
-    ],
-    category: 'film',
-    order: 1,
-    visible: true,
-  },
-  {
-    id: 'cuadros-silentes',
-    title: 'CUADROS SILENTES',
-    subtitle: 'Cortometraje',
-    description: 'Un cortometraje experimental que explora el silencio como forma de comunicación. Sin diálogos, la narrativa se construye a través de imágenes poéticas y composiciones visuales que invitan a la reflexión.',
-    year: '2024',
-    role: 'Directora / Cinematógrafa',
-    imageCount: 9,
-    thumbnail: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&h=500&fit=crop',
-    images: [
-      'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&h=800&fit=crop',
-      'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1200&h=800&fit=crop',
-      'https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?w=1200&h=800&fit=crop',
-    ],
-    category: 'video',
-    order: 2,
-    visible: true,
-  },
-  {
-    id: 'momentos',
-    title: 'MOMENTOS',
-    subtitle: 'Serie Fotográfica',
-    description: 'Una colección de instantes capturados en el tiempo. Momentos efímeros que revelan la belleza de lo cotidiano y la poesía escondida en los pequeños detalles de la vida.',
-    year: '2023',
-    role: 'Fotógrafa',
-    imageCount: 20,
-    thumbnail: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&h=500&fit=crop',
-    images: [
-      'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1200&h=800&fit=crop',
-      'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1200&h=800&fit=crop',
-      'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=1200&h=800&fit=crop',
-      'https://images.unsplash.com/photo-1505533321630-975218a5f66f?w=1200&h=800&fit=crop',
-    ],
-    category: 'photo',
-    order: 3,
-    visible: true,
-  },
-  {
-    id: 'perspectivas',
-    title: 'PERSPECTIVAS',
-    subtitle: 'Documental',
-    description: 'Un viaje visual que desafía nuestra forma de ver el mundo. A través de ángulos inusuales y composiciones arriesgadas, este proyecto invita a reconsiderar lo que damos por sentado.',
-    year: '2023',
-    role: 'Directora / Productora',
-    imageCount: 15,
-    thumbnail: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=500&fit=crop',
-    images: [
-      'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1200&h=800&fit=crop',
-      'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&h=800&fit=crop',
-      'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&h=800&fit=crop',
-    ],
-    category: 'film',
-    order: 4,
-    visible: true,
-  },
-  {
-    id: 'suenos',
-    title: 'SUEÑOS',
-    subtitle: 'Videoarte',
-    description: 'Una pieza de videoarte que explora el territorio onírico. Entre la realidad y la fantasía, las imágenes fluyen como pensamientos en la noche, creando una experiencia visual hipnótica.',
-    year: '2023',
-    role: 'Directora / Artista Visual',
-    imageCount: 8,
-    thumbnail: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&h=500&fit=crop',
-    images: [
-      'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=1200&h=800&fit=crop',
-      'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=1200&h=800&fit=crop',
-      'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=1200&h=800&fit=crop',
-    ],
-    category: 'video',
-    order: 5,
-    visible: true,
-  },
-];
+// Transform JSON data to Project format
+function transformProject(data: typeof projectsData.projects[0]): Project {
+  return {
+    id: data.id,
+    title: data.title,
+    subtitle: data.subtitle,
+    description: data.description,
+    year: data.year,
+    role: data.role,
+    category: data.category as 'film' | 'photo' | 'video',
+    thumbnail: data.thumbnail,
+    imageCount: data.media.filter(m => m.type === 'image').length,
+    images: data.media.filter(m => m.type === 'image').map(m => m.src),
+    media: data.media.map(m => ({
+      tipo: m.type as 'image' | 'video' | 'external',
+      archivo: m.type !== 'external' ? m.src : null,
+      videoUrl: m.type === 'external' ? m.src : undefined,
+      alt: '',
+    })),
+    order: data.order,
+    visible: data.visible,
+  };
+}
 
-// Export for backward compatibility
-export const projects = staticProjects;
+// Load projects from JSON
+export const projects: Project[] = projectsData.projects
+  .map(transformProject)
+  .filter(p => p.visible)
+  .sort((a, b) => (a.order || 0) - (b.order || 0));
 
 export const navItems: NavItem[] = [
   { label: 'INSTAGRAM', href: 'https://instagram.com', external: true },
@@ -112,11 +44,9 @@ export const heroImages = [
 ];
 
 export function getProjectById(id: string): Project | undefined {
-  return staticProjects.find((project) => project.id === id);
+  return projects.find((project) => project.id === id);
 }
 
 export function getVisibleProjects(): Project[] {
-  return staticProjects
-    .filter((p) => p.visible)
-    .sort((a, b) => (a.order || 0) - (b.order || 0));
+  return projects;
 }

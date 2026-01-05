@@ -39,7 +39,7 @@ export default function ProjectPage() {
             href="/"
             className="text-[10px] md:text-xs font-medium tracking-[0.15em] text-white hover:text-white/80 transition-colors"
           >
-            ANTONIA'S FILMS
+            ANTONIA VILLALBA
           </Link>
           <Link
             href="/#gallery"
@@ -180,7 +180,7 @@ export default function ProjectPage() {
       <footer className="border-t border-white/10 py-8">
         <Container>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-white/40">
-            <span className="text-[10px] tracking-[0.15em]">ANTONIA'S FILMS</span>
+            <span className="text-[10px] tracking-[0.15em]">ANTONIA VILLALBA</span>
             <span className="text-[10px] tracking-[0.15em]">&copy;2025</span>
           </div>
         </Container>

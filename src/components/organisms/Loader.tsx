@@ -58,7 +58,7 @@ export function Loader() {
                 }}
                 className="text-white/60 text-xs tracking-[0.3em] uppercase"
               >
-                Antonia's Films
+                Antonia Villalba
               </motion.p>
             </div>
 

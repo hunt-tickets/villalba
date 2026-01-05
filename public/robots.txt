@@ -1,0 +1,11 @@
+# Robots.txt for Antonia Villalba Portfolio
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://antoniavillalba.com/sitemap.xml
+
+# Disallow admin
+User-agent: *
+Disallow: /admin

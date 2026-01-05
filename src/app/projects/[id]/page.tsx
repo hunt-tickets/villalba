@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getProjectById, projects } from '@/data/projects';
 import { Container } from '@/components/atoms';
+import { Loader } from '@/components/organisms';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 
 export default function ProjectPage() {
@@ -31,8 +32,10 @@ export default function ProjectPage() {
   const prevProject = projects[(currentIndex - 1 + projects.length) % projects.length];
 
   return (
-    <main className="min-h-screen bg-black">
-      {/* Header */}
+    <>
+      <Loader />
+      <main className="min-h-screen bg-black">
+        {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 py-4 md:py-6 bg-black/80 backdrop-blur-md">
         <Container className="flex items-center justify-between">
           <Link
@@ -184,7 +187,8 @@ export default function ProjectPage() {
             <span className="text-[10px] tracking-[0.15em]">&copy;2025</span>
           </div>
         </Container>
-      </footer>
-    </main>
+        </footer>
+      </main>
+    </>
   );
 }

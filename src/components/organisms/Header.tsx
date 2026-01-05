@@ -62,7 +62,7 @@ export function Header() {
             href="/"
             className="text-[10px] md:text-xs font-medium tracking-[0.15em] text-white hover:text-white/80 transition-colors"
           >
-            ANTONIA VILLALBA
+            ANTONIA'S FILMS
           </a>
 
           {/* Desktop Navigation */}

@@ -77,21 +77,6 @@ export function ImageStack({ images, className = '' }: ImageStackProps) {
         </motion.div>
       ))}
 
-      {/* Dot indicators - mobile only */}
-      <div className="md:hidden absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setTopIndex(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === topIndex
-                ? 'bg-white w-6'
-                : 'bg-white/40 hover:bg-white/60'
-            }`}
-            aria-label={`Go to image ${index + 1}`}
-          />
-        ))}
-      </div>
     </div>
   );
 }

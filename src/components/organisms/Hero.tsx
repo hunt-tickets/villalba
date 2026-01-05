@@ -17,7 +17,7 @@ export function Hero() {
             animate="animate"
             className="flex flex-col items-center text-center"
           >
-            <div className="relative mb-6 md:mb-8">
+            <div className="relative mb-12 md:mb-8">
               <ImageStack images={heroImages} className="mx-auto" />
             </div>
 

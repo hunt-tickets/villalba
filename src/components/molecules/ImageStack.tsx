@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, PanInfo } from 'framer-motion';
 import Image from 'next/image';
 import { imageStackVariants } from '@/lib/animations';
@@ -8,10 +8,31 @@ import { imageStackVariants } from '@/lib/animations';
 interface ImageStackProps {
   images: string[];
   className?: string;
+  autoPlayInterval?: number;
 }
 
-export function ImageStack({ images, className = '' }: ImageStackProps) {
+export function ImageStack({ images, className = '', autoPlayInterval = 5000 }: ImageStackProps) {
   const [topIndex, setTopIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const nextImage = useCallback(() => {
+    setTopIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
+  // Auto-rotate images
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = setInterval(() => {
+      nextImage();
+    }, autoPlayInterval);
+
+    return () => clearInterval(timer);
+  }, [isPaused, autoPlayInterval, nextImage]);
+
+  const handleDragStart = () => {
+    setIsPaused(true);
+  };
 
   const handleDragEnd = (
     _event: MouseEvent | TouchEvent | PointerEvent,
@@ -27,6 +48,8 @@ export function ImageStack({ images, className = '' }: ImageStackProps) {
         setTopIndex((prev) => (prev - 1 + images.length) % images.length);
       }
     }
+    // Resume auto-play after a short delay
+    setTimeout(() => setIsPaused(false), 3000);
   };
 
   // Reorder images so topIndex is first
@@ -52,6 +75,7 @@ export function ImageStack({ images, className = '' }: ImageStackProps) {
           drag={stackPosition === 0 ? 'x' : false}
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}
+          onDragStart={stackPosition === 0 ? handleDragStart : undefined}
           onDragEnd={stackPosition === 0 ? handleDragEnd : undefined}
           className={`absolute inset-0 origin-center ${
             stackPosition === 0 ? 'cursor-grab active:cursor-grabbing' : ''
@@ -76,7 +100,6 @@ export function ImageStack({ images, className = '' }: ImageStackProps) {
           </div>
         </motion.div>
       ))}
-
     </div>
   );
 }

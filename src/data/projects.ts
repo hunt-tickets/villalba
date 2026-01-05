@@ -1,6 +1,7 @@
 import { Project, NavItem } from '@/types';
 
-export const projects: Project[] = [
+// Static fallback projects (used when CMS content is empty)
+export const staticProjects: Project[] = [
   {
     id: 'historias-urbanas',
     title: 'HISTORIAS URBANAS',
@@ -17,6 +18,8 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&h=800&fit=crop',
     ],
     category: 'film',
+    order: 1,
+    visible: true,
   },
   {
     id: 'cuadros-silentes',
@@ -33,6 +36,8 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?w=1200&h=800&fit=crop',
     ],
     category: 'video',
+    order: 2,
+    visible: true,
   },
   {
     id: 'momentos',
@@ -50,6 +55,8 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1505533321630-975218a5f66f?w=1200&h=800&fit=crop',
     ],
     category: 'photo',
+    order: 3,
+    visible: true,
   },
   {
     id: 'perspectivas',
@@ -66,6 +73,8 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&h=800&fit=crop',
     ],
     category: 'film',
+    order: 4,
+    visible: true,
   },
   {
     id: 'suenos',
@@ -82,8 +91,13 @@ export const projects: Project[] = [
       'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=1200&h=800&fit=crop',
     ],
     category: 'video',
+    order: 5,
+    visible: true,
   },
 ];
+
+// Export for backward compatibility
+export const projects = staticProjects;
 
 export const navItems: NavItem[] = [
   { label: 'INSTAGRAM', href: 'https://instagram.com', external: true },
@@ -98,5 +112,11 @@ export const heroImages = [
 ];
 
 export function getProjectById(id: string): Project | undefined {
-  return projects.find((project) => project.id === id);
+  return staticProjects.find((project) => project.id === id);
+}
+
+export function getVisibleProjects(): Project[] {
+  return staticProjects
+    .filter((p) => p.visible)
+    .sort((a, b) => (a.order || 0) - (b.order || 0));
 }
